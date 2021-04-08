@@ -8,7 +8,7 @@ class GameBoard
   end
 
   def to_s
-    build_board.push(files_row).join(row_seperator) << "\n"
+    board.join(row_seperator) << "\n"
   end
 
   def field(position = :A1, piece = nil)
@@ -57,31 +57,38 @@ class GameBoard
     fields = {}
     file   = :A
     files.times do
-      fields[file] = []
-      ranks.times { fields[file] << ' ' * file.length }
+      fields[file] = (1..ranks).map { ' ' }
       file = file.next
     end
 
     fields
   end
 
-  def build_board
-    @fields.values.transpose.reverse.map.with_index do |row, i|
-      rank = ranks - i
-      rank_padding = ' ' * (ranks.to_s.length - rank.to_s.length)
-      row.unshift("#{rank}#{rank_padding}").join(' | ')
+  def board
+    ranks = board_ranks
+    rows  = @fields.values.transpose.reverse
+
+    rows.map.with_index do |row, i|
+      row.unshift(ranks[i]).join(' | ') << " |\n"
+    end << board_files
+  end
+
+  def board_ranks
+    ranks.downto(1).to_a.map do |rank|
+      padding = ' ' * (ranks.to_s.length - rank.to_s.length)
+      rank.to_s << padding
     end
   end
 
-  def files_row
+  def board_files
     padding = ' ' * (ranks.to_s.length + 3)
-    "#{padding}#{@fields.keys.join(' | ')}"
+    padding << @fields.keys.join(' | ')
   end
 
   def row_seperator
     padding   = ' ' * (ranks.to_s.length + 1)
-    seperator = '–' * (files_row.length - ranks.to_s.length + 1)
-    " |\n#{padding}#{seperator}\n"
+    seperator = (['+', '–––'] * files).join << "+\n"
+    padding << seperator
   end
 
   def piece_valid?(piece)
