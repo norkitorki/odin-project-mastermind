@@ -8,7 +8,7 @@ class GameBoard
   end
 
   def to_s
-    top_line << board.join(row_seperator) << "\n"
+    top_line << board.join(row_seperator) << bottom_line << board_files << "\n"
   end
 
   def field(position = :A1, piece = nil)
@@ -69,13 +69,13 @@ class GameBoard
     rows  = @fields.values.transpose.reverse
 
     rows.map.with_index do |row, i|
-      row.unshift(ranks[i]).join(' │ ') << " │\n"
-    end << board_files
+      ranks[i] << '┃ ' << row.join(' │ ') << " ┃\n"
+    end
   end
 
   def board_ranks
     ranks.downto(1).to_a.map do |rank|
-      padding = ' ' * (ranks.to_s.length - rank.to_s.length)
+      padding = ' ' * (ranks.to_s.length - rank.to_s.length + 1)
       rank.to_s << padding
     end
   end
@@ -91,7 +91,7 @@ class GameBoard
 
   def row_seperator
     padding   = ' ' * row_padding
-    seperator = (['┼', '───'] * files).join << "┤\n"
+    seperator = '┠' << Array.new(files, '───').join('┼') << "┨\n"
     padding << seperator
   end
 
@@ -108,6 +108,10 @@ class GameBoard
   end
 
   def top_line
-    ' ' * row_padding << '┬' << Array.new(files, '───').join('┬') << "┐\n"
+    ' ' * row_padding << '┏' << Array.new(files, '━━━').join('┯') << "┓\n"
+  end
+
+  def bottom_line
+    ' ' * row_padding << '┗' << Array.new(files, '━━━').join('┷') << "┛\n"
   end
 end
