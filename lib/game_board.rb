@@ -48,7 +48,7 @@ class GameBoard
   end
 
   def clear
-    fields.each { |pos| field(pos, ' ') }
+    initialize
   end
 
   private

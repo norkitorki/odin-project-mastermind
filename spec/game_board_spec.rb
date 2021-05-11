@@ -89,6 +89,8 @@ describe GameBoard do
     game_board.field(:A3, 'W')
     game_board.field(:A2, 'W')
     game_board.field(:C3, 'W')
-    expect(game_board.clear).to eq(game_board.empty_fields)
+    expect(game_board.clear).to eq(
+      { :A=>[" ", " ", " "], :B=>[" ", " ", " "], :C=>[" ", " ", " "] }
+    )
   end
 end
