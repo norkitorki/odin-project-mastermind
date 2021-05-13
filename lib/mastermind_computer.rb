@@ -66,11 +66,7 @@ class MastermindComputer
       minmax[option] = hit_count.values.max
     end
 
-    find_min_scores(minmax)
-  end
-
-  def find_min_scores(scores_set)
-    scores_set.select { |_, count| count == scores_set.values.min }.keys
+    minmax.keys
   end
 
   def select_next_guess(codes)
