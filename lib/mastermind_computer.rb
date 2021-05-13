@@ -44,11 +44,11 @@ class MastermindComputer
     selections.each { |set| set.delete(code) }
   end
 
-  def remove_codes_with_different_response(guess, current_key_pegs)
-    current_key_pegs.sort!
+  def remove_codes_with_different_response(guess, key_pegs)
+    key_pegs.sort!
     selection.select! do |code|
-      key_pegs = key_peg_response(guess, code).sort
-      key_pegs.eql?(current_key_pegs)
+      current_key_pegs = key_peg_response(guess, code).sort
+      current_key_pegs.eql?(key_pegs)
     end
   end
 
