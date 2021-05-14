@@ -11,7 +11,7 @@ module MastermindMessages
   end
 
   def player_code_message(player, input_options)
-    "\n#{player}, please set up the code.\n\nInput #{input_options}\n"
+    "\n#{player}, please set up the code.\n\nInput #{input_options}\n\n"
   end
 
   def codebreaker_input_message(codebreaker, input_options)
