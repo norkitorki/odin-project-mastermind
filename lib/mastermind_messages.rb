@@ -19,7 +19,7 @@ module MastermindMessages
       you can play as the Codebreaker and let the Computer set up the code.
 
       Good Luck!
-      –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+      ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
     INSTRUCTIONS
   end
