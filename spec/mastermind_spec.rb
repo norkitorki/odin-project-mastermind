@@ -162,7 +162,7 @@ describe Mastermind do
         codebreaker   = mastermind.player
         input_options = user_input_options
         expect(codebreaker_input_message(codebreaker, input_options)).to eq(
-          "\nJohn's turn.\n\nInput #{user_input_options}\n"
+          "\nJohn's turn.\n\nInput #{user_input_options}\n\n"
         )
       end
     end
@@ -213,8 +213,10 @@ describe Mastermind do
     describe 'code_unsolved_message' do
       it 'should display a message if the code has not been solved' do
         codebreaker = 'The Computer'
-        expect(code_unsolved_message(codebreaker)).to eq(
-          "\e[0;33;49m\nThe Computer was unable to crack the code.\e[0m"
+        code        = code_display(%w[R B P B])
+        expect(code_unsolved_message(codebreaker, code)).to eq(
+            "\e[0;33;49m\nThe Computer was unable to crack the code.\e[0m" \
+            "\n\nThe code was #{code}"
         )
       end
     end

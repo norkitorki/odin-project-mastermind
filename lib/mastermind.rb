@@ -98,7 +98,7 @@ class Mastermind
     if code_solved?
       puts code_solved_message(codebreaker)
     else
-      puts code_unsolved_message(codebreaker)
+      puts code_unsolved_message(codebreaker, code_display(code))
     end
 
     reset_game

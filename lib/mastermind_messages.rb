@@ -62,8 +62,9 @@ module MastermindMessages
     "\e[0;32;49m\n#{codebreaker} has cracked the code!\e[0m"
   end
 
-  def code_unsolved_message(codebreaker)
-    "\e[0;33;49m\n#{codebreaker} was unable to crack the code.\e[0m"
+  def code_unsolved_message(codebreaker, code)
+    "\e[0;33;49m\n#{codebreaker} was unable to crack the code.\e[0m" \
+    "\n\nThe code was #{code}"
   end
 
   def final_score_message(player, points)
