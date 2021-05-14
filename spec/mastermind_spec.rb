@@ -119,12 +119,40 @@ describe Mastermind do
   end
 
   context '#Messages' do
+    describe 'game_instructions' do
+      it 'should display instructions' do
+        expect(game_instructions).to eq(
+          <<~INSTRUCTIONS
+            ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+            \e[4;39;49mWelcome to Mastermind!\e[0m
+
+            In Mastermind the Codemaster will set up a code sequence consisting of four colored pegs.
+            The color pegs are defined as follows: \e[0;34;49m⬤\e[0m \e[0;36;49m⬤\e[0m \e[0;32;49m⬤\e[0m \e[0;33;49m⬤\e[0m \e[0;35;49m⬤\e[0m \e[0;31;49m⬤\e[0m
+
+            The Codebreaker's task is to guess the correct color peg sequence in 12 turns.
+            After each guess made,the game will provide a key peg response of either \e[0;31;49m\u25C9\e[0m or \u25C9
+
+            A red key peg indicates that a color peg is at the right position.
+            A white key peg indicates that a color peg is at the wrong position.
+            Keep in mind though that the key pegs are not ordered.
+
+            You can either play as the Codemaster to set up the code and let the Computer act as the Codebreaker, or
+            you can play as the Codebreaker and let the Computer set up the code.
+
+            Good Luck!
+            –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+          INSTRUCTIONS
+        )
+      end
+    end
+
     describe 'player_code_message' do
       it 'should prompt the player to set up the code' do
         player = mastermind.player
         input_options = user_input_options
         expect(player_code_message(player, input_options)).to eq(
-          "\nJohn, please set up the code.\n\nInput #{user_input_options}\n"
+          "\nJohn, please set up the code.\n\nInput #{user_input_options}\n\n"
         )
       end
     end

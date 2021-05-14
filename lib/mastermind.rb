@@ -19,6 +19,7 @@ class Mastermind
     @guess       = []
     @code        = []
     @turn        = 1
+    puts game_instructions
   end
 
   def play

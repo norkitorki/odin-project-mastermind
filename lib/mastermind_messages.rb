@@ -1,5 +1,29 @@
 # console messages for Mastermind
 module MastermindMessages
+  def game_instructions
+    <<~INSTRUCTIONS
+      ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+      \e[4;39;49mWelcome to Mastermind!\e[0m
+
+      In Mastermind the Codemaster will set up a code sequence consisting of four colored pegs.
+      The color pegs are defined as follows: \e[0;34;49m⬤\e[0m \e[0;36;49m⬤\e[0m \e[0;32;49m⬤\e[0m \e[0;33;49m⬤\e[0m \e[0;35;49m⬤\e[0m \e[0;31;49m⬤\e[0m
+
+      The Codebreaker's task is to guess the correct color peg sequence in 12 turns.
+      After each guess made,the game will provide a key peg response of either \e[0;31;49m\u25C9\e[0m or \u25C9
+
+      A red key peg indicates that a color peg is at the right position.
+      A white key peg indicates that a color peg is at the wrong position.
+      Keep in mind though that the key pegs are not ordered.
+
+      You can either play as the Codemaster to set up the code and let the Computer act as the Codebreaker, or
+      you can play as the Codebreaker and let the Computer set up the code.
+
+      Good Luck!
+      –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    INSTRUCTIONS
+  end
+
   def game_mode_message
     "Would you like to play as the Codemaster or Codebreaker?\n" \
       "\n'1' to play as the Codemaster  (decide the code)" \
