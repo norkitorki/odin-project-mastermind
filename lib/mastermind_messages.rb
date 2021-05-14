@@ -39,7 +39,7 @@ module MastermindMessages
   end
 
   def codebreaker_input_message(codebreaker, input_options)
-    "\n#{codebreaker}'s turn.\n\nInput #{input_options}\n"
+    "\n#{codebreaker}'s turn.\n\nInput #{input_options}\n\n"
   end
 
   def game_count_message(index, game_length)
