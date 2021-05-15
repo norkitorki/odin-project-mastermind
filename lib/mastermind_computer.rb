@@ -21,17 +21,14 @@ class MastermindComputer
     # remove the current guess from the sets of codes
     remove_code_guess(guess(turn), combinations, selection)
 
-    # repopulate the set if the computer was not able to break the code
+    # repopulate the selection if the computer was not able to break the code
     self.selection = combinations[0..] if selection.empty?
 
     # remove codes with a different key peg response
     remove_codes_with_different_response(guess(turn), key_peg_response)
 
-    # store the min(max) results
-    minmax_set = find_minmax
-
-    # find and store the next guess
-    guesses[turn + 1] = select_next_guess(minmax_set)
+    # pick and store the next guess
+    guesses[turn + 1] = selection.sample
   end
 
   def reset
@@ -50,27 +47,5 @@ class MastermindComputer
       current_key_pegs = key_peg_response(guess, code).sort
       current_key_pegs.eql?(key_pegs)
     end
-  end
-
-  def find_minmax
-    minmax = {}
-
-    combinations.each do |option|
-      hit_count = Hash.new(0)
-
-      selection.each do |code|
-        key_pegs = key_peg_response(code, option).sort
-        hit_count[key_pegs] += 1
-      end
-
-      minmax[option] = hit_count.values.max
-    end
-
-    minmax.keys
-  end
-
-  def select_next_guess(codes)
-    codes.each { |code| return code if selection.include?(code) }
-    codes.sample
   end
 end

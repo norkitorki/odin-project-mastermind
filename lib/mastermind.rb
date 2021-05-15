@@ -80,7 +80,6 @@ class Mastermind
   end
 
   def next_computer_guess(turn)
-    puts computer_loading_message
     computer.next_guess(turn, board.key_pegs(turn))
   end
 
