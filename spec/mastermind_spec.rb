@@ -175,20 +175,11 @@ describe Mastermind do
       end
     end
 
-    describe 'computer_loading_message' do
-      it 'should display a message indicating that the computer is loading' do
-        expect(computer_loading_message).to eq(
-          "\nThe Computer is generating the next guess." \
-          ' This might take a while...'
-        )
-      end
-    end
-
     describe 'computer_input_message' do
       it 'should display the guess selected by the computer' do
         computer_guess = code_display(%w[R B P R])
         expect(computer_input_message(computer_guess)).to eq(
-          "\nThe computer's guess: #{code_display(%w[R B P R])}"
+          "\nThe Computer's guess: #{code_display(%w[R B P R])}"
         )
       end
     end

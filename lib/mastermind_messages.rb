@@ -46,12 +46,8 @@ module MastermindMessages
     "\nGame #{index} of #{game_length}"
   end
 
-  def computer_loading_message
-    "\nThe Computer is generating the next guess. This might take a while..."
-  end
-
   def computer_input_message(computer_guess)
-    "\nThe computer's guess: #{computer_guess}"
+    "\nThe Computer's guess: #{computer_guess}"
   end
 
   def replay_message
