@@ -133,8 +133,9 @@ describe Mastermind do
             After each guess made,the game will provide a key peg response of either \e[0;31;49m\u25C9\e[0m or \u25C9
 
             A red key peg indicates that a color peg is at the right position.
-            A white key peg indicates that a color peg is at the wrong position.
-            Keep in mind though that the key pegs are not ordered.
+            A white key peg indicates that a color peg is included in the code,but placed at the wrong position.
+            If a color peg is not included in the code, no key peg will be placed.
+            Please note that the key pegs are not ordered.
 
             You can either play as the Codemaster to set up the code and let the Computer act as the Codebreaker, or
             you can play as the Codebreaker and let the Computer set up the code.
